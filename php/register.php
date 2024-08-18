@@ -13,7 +13,7 @@ $response = [
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
+    $username = $_POST["usuario"];
     $password = $_POST["password"];
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
     // Verificar si el nombre de usuario ya existe
-    $checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = ?";
+    $checkUserQuery = "SELECT COUNT(*) FROM usuario WHERE nombreUsuario = ?";
     if ($statement = $connection->prepare($checkUserQuery)) {
         $statement->bind_param("s", $username);
         $statement->execute();
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Insertar el nuevo usuario
-    $registerQuery = "INSERT INTO usuarios (nombreUsuario, nombreU, apellidoU, passwordU, rolU) VALUES (?, ?, ?, ?, ?)";
+    $registerQuery = "INSERT INTO usuario (nombreUsuario, nombreU, apellidoU, passwordU, rolU) VALUES (?, ?, ?, ?, ?)";
     if ($statement = $connection->prepare($registerQuery)) {
         $statement->bind_param("sssss", $username, $nombre, $apellido, $hashedPassword, $rol);
 
