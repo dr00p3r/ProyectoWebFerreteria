@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			<td>${usuario.telefonoU}</td>
 			<td>${usuario.emailU}</td>
 			<td>${usuario.nombreUsuario}</td>
+			<td>${usuario.rolU}</td>
 			<td>${usuario.fechaCreacionU}</td>
 		`;
 			
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			document.getElementById('modal-email').innerText = `Email: ${usuario.emailU}`;
 			document.getElementById('modal-nombre').innerText = `Nombre: ${usuario.nombreU}`;
 			document.getElementById('modal-apellido').innerText = `Apellido: ${usuario.apellidoU}`;
+			document.getElementById('modal-rol').innerText = `Rol: ${usuario.rolU}`;
 			document.getElementById('modal-fecha-creacion').innerText = `Fecha de Creación: ${usuario.fechaCreacionU}`;
 			document.getElementById('modal-estado').innerText = `Estado: ${usuario.estadoU}`;
 
