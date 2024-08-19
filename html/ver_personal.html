@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FERRETERIA</title>
+<title>Ver personal  - FERRETERIA</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="../css/main.css" rel="stylesheet" type="text/css">
+<link href="../css/ver_personal.css" rel="stylesheet" type="text/css">
 <link href="../css/sidebar.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="../js/session_protected.js"></script>
@@ -31,8 +31,10 @@
     <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"></path>
   </symbol>
 </svg>
-<main class="d-flex flex-nowrap">
 <button class="btn btn-primary d-md-none" type="button" id="sidebarToggle"><span class="navbar-toggler-icon"></span></button>
+<main class="d-flex flex-nowrap">
+
+ <!-- Barra lateral -->
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar">
 	<button class="btn btn-primary d-md-none text-center" type="button" id="sidebarInsideToggle"><span class="navbar-toggler-icon"></span>
 	</button>
@@ -42,7 +44,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto list-unstyled ps-0">
 	  <li class="mb-1">
-        <button id="btnInicio" class="btn btn-primary w-100 d-inline-flex align-items-center rounded border-0" aria-current="page"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+        <button id="btnInicio" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0" aria-current="page"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Inicio
         </button>
       </li>
@@ -58,13 +60,13 @@
         </div>
       </li>
       <li class="mb-1">
-        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#personal-collapse" aria-expanded="false"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+        <button class="btn btn-primary w-100 d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#personal-collapse" aria-expanded="false"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           Personal
         </button>
-        <div class="collapse" id="personal-collapse" style="">
+        <div class="collapse show" id="personal-collapse" style="">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="registro_personal.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">Añadir</a></li>
-            <li><a href="ver_personal.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">Ver todo</a></li>
+            <li><a href="" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">Ver todo</a></li>
           </ul>
         </div>
       </li>
@@ -105,9 +107,58 @@
       </ul>
 	</div>
 </div>
+	
+<div class="main-content">
+	<div class="container mt-5">
+        <h1 class="mb-4">Personal</h1>
+        <table class="table table-striped table-bordered" id="usuarios-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cédula</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Fecha de Creación</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios-table-body">
+                <!-- Los datos de los usuarios se insertarán aquí -->
+            </tbody>
+        </table>
+    </div>
+	
+	<!-- Modal -->
+    <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="usuarioModalLabel">Detalles del Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-nombre-usuario"></p>
+                    <p id="modal-cedula"></p>
+                    <p id="modal-telefono"></p>
+                    <p id="modal-email"></p>
+                    <p id="modal-nombre"></p>
+                    <p id="modal-apellido"></p>
+                    <p id="modal-fecha-creacion"></p>
+                    <p id="modal-estado"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </main>
 
-<script src="../js/main.js"></script>
+<script src="../js/ver_personal.js"></script>
 <script src="../js/sidebar.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+#registro-personal {
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+  #registro-personal {
+	width: 60%;
+  }
+}
+
+@media (min-width: 992px) {
+  #registro-personal {
+	width: 50%;
+  }
+}

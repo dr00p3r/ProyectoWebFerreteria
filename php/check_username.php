@@ -13,10 +13,10 @@ $response = [
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombreUsuario = $_POST["nombreUsuario"];
-    
+	
 	// Verificar si la cedula ya existe
     $checkQuery = "SELECT COUNT(*) FROM usuario WHERE nombreUsuario = ?";
-    if ($statement = $connection->prepare(checkQuery)) {
+    if ($statement = $connection->prepare($checkQuery)) {
         $statement->bind_param("s", $nombreUsuario);
         $statement->execute();
         $statement->bind_result($userCount);

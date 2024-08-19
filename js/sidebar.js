@@ -1,6 +1,11 @@
 // JavaScript Document
 completarSideBarSesion();
 
+
+document.getElementById('btnInicio').addEventListener('click', function () {
+    window.location.href = 'main.html';
+});
+
 document.getElementById('sidebarToggle').addEventListener('click', function () {
 	document.querySelector('.sidebar').classList.toggle('show');
 });
