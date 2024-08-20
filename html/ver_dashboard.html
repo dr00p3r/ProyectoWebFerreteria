@@ -43,17 +43,17 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto list-unstyled ps-0">
 	  <li class="mb-1">
-        <button id="btnInicio" class="btn btn-primary w-100 d-inline-flex align-items-center rounded border-0" aria-current="page"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+        <button id="btnInicio" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0" aria-current="page"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Inicio
         </button>
       </li>
       <li class="mb-1">
-        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashborad-collapse" aria-expanded="false"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+        <button class="btn btn-primary w-100 d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashborad-collapse" aria-expanded="false"><svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           Dashboard
         </button>
-        <div class="collapse" id="dashborad-collapse" style="">
+        <div class="collapse show" id="dashborad-collapse" style="">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="ver_dashboard.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">General</a></li>
+            <li><a href="" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">General</a></li>
             <li><a href="" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-80 py-2 px-3">Reportes</a></li>
           </ul>
         </div>
@@ -286,6 +286,7 @@
                                 <div class="card-body">
                                     <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
                                     <div class="progress mb-4">
+
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>

@@ -1,5 +1,5 @@
 <?php 
-include 'db_connection.php';
+include 'db_connection_admin.php';
 
 header('Content-Type: application/json');
 
@@ -12,8 +12,8 @@ $response = [
 // Verificar si la solicitud es GET
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Obtener todos los usuarios
-    $fetchQuery = "SELECT idU, nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, fechaCreacionU, estadoU, rolU FROM usuario WHERE rolU != 'administrador'";
-    if ($result = $connection->query($fetchQuery)) {
+    $fetchQuery = "SELECT idU, nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, fechaCreacionU, estadoU, rolU, estadoCivilU FROM usuario";
+    if ($result = $connection_admin->query($fetchQuery)) {
         while ($row = $result->fetch_assoc()) {
             $response['usuarios'][] = $row;
         }

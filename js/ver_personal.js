@@ -14,13 +14,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 			<td>${usuario.cedulaU}</td>
 			<td>${usuario.telefonoU}</td>
 			<td>${usuario.emailU}</td>
-			<td>${usuario.nombreUsuario}</td>
 			<td>${usuario.rolU}</td>
+			<td>${usuario.estadoCivilU}</td>
+			<td>${usuario.nombreUsuario}</td>
 			<td>${usuario.fechaCreacionU}</td>
+			<td>
+				<button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
+			</td>
 		`;
 			
 		row.addEventListener('click', () => {
-			// Mostrar los detalles en el modal
 			document.getElementById('modal-nombre-usuario').innerText = `Nombre de Usuario: ${usuario.nombreUsuario}`;
 			document.getElementById('modal-cedula').innerText = `Cédula: ${usuario.cedulaU}`;
 			document.getElementById('modal-telefono').innerText = `Teléfono: ${usuario.telefonoU}`;
@@ -28,10 +31,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 			document.getElementById('modal-nombre').innerText = `Nombre: ${usuario.nombreU}`;
 			document.getElementById('modal-apellido').innerText = `Apellido: ${usuario.apellidoU}`;
 			document.getElementById('modal-rol').innerText = `Rol: ${usuario.rolU}`;
+			document.getElementById('modal-estado-civil').innerText = `Estado civil: ${usuario.estadoCivilU}`;
 			document.getElementById('modal-fecha-creacion').innerText = `Fecha de Creación: ${usuario.fechaCreacionU}`;
 			document.getElementById('modal-estado').innerText = `Estado: ${usuario.estadoU}`;
 
-			// Mostrar el modal
 			const myModal = new bootstrap.Modal(document.getElementById('usuarioModal'));
 			myModal.show();
 		});

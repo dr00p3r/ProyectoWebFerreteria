@@ -1,5 +1,5 @@
 <?php 
-include 'db_connection.php';
+include 'db_connection_admin.php';
 
 session_start();
 
@@ -20,12 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$usuario = $_POST["usuario"];
     $password = $_POST["password"];
 	$rol = $_POST["rol"];
+	$fechaNacimiento = $_POST["fechaNacimiento"];
+	$estadoCivil = $_POST["estadoCivil"];
     
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
 	// Verificar si la cedula ya existe
     $checkQuery = "SELECT COUNT(*) FROM usuario WHERE cedulaU = ?";
-    if ($statement = $connection->prepare(checkQuery)) {
+    if ($statement = $connection_admin->prepare(checkQuery)) {
         $statement->bind_param("s", $cedula);
         $statement->execute();
         $statement->bind_result($userCount);
@@ -42,9 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 	
     // Insertar el nuevo usuario
-    $registerQuery = "INSERT INTO usuario (nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, passwordU, rolU) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    if ($statement = $connection->prepare($registerQuery)) {
-        $statement->bind_param("ssssssss", $nombre, $apellido, $cedula, $telefono, $email, $usuario, $hashedPassword, $rol);
+    $registerQuery = "INSERT INTO usuario (nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, passwordU, rolU, fechaNacimientoU, estadoCivilU) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    if ($statement = $connection_admin->prepare($registerQuery)) {
+        $statement->bind_param("sssssssss", $nombre, $apellido, $cedula, $telefono, $email, $usuario, $estadoCivil, $estadoCivil, $hashedPassword, $rol);
 
         if ($statement->execute()) {
 			$response['success'] = true;

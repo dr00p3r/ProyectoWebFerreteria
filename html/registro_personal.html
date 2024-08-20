@@ -112,7 +112,9 @@
 	<div id="error-msg" class="alert alert-danger d-none" role="alert">
         Error al registrar. Por favor, revise los campos.
     </div>
-	
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Registrar Personal</h1>
+	</div>
 	 <form id="registro-personal">
         <!-- Nombre -->
         <div class="form-floating mb-3">
@@ -154,6 +156,17 @@
             <input type="date" class="form-control" id="fecha-nacimiento" name="fecha-nacimiento" required>
 			<div class="invalid-feedback">La fecha de nacimiento es inválida</div>
             <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+        </div>
+		 
+		<!-- Estado civil -->
+        <div class="form-floating mb-3">
+            <select class="form-select" id="estadoCivil" name="estadoCivil">
+				<option value="Soltero">Soltero</option>
+				<option value="Casado">Casado</option>
+				<option value="Unión Libre">Unión Libre</option>
+				<option value="Divorciado">Divorciado</option>
+			</select>
+			<label for="estadoCivil">Estado civil</label>
         </div>
 
         <!-- Rol -->
