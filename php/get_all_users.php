@@ -12,7 +12,7 @@ $response = [
 // Verificar si la solicitud es GET
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Obtener todos los usuarios
-    $fetchQuery = "SELECT idU, nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, fechaCreacionU, estadoU, rolU, estadoCivilU FROM usuario";
+    $fetchQuery = "SELECT idU, nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, fechaCreacionU, estadoU, rolU, estadoCivilU, fechaNacimientoU FROM usuario";
     if ($result = $connection_admin->query($fetchQuery)) {
         while ($row = $result->fetch_assoc()) {
             $response['usuarios'][] = $row;

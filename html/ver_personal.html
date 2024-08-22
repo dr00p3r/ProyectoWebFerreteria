@@ -125,7 +125,8 @@
 					<th>Rol</th>
 					<th>Estado civil</th>
                     <th>Nombre de Usuario</th>
-                    <th>Fecha de Creación</th>
+					<th>Fecha de Creación</th>
+					<th>Estado</th>
 					<th>Acciones</th>
                 </tr>
             </thead>
@@ -135,6 +136,114 @@
         </table>
     </div>
 	
+	<!-- Modal de edicion -->
+	<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="editModalLabel">Actualizar el Usuario</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+				<div class="modal-body">
+					<form id="editUsuarioForm">
+						<!-- Acordeón -->
+						<div class="accordion" id="editUserAccordion">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingBasic">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBasic" aria-expanded="true">
+										Información Personal
+									</button>
+								</h2>
+								<div id="collapseBasic" class="accordion-collapse collapse show">
+									<div class="accordion-body">
+										<div style="display: none">
+											<input type="text" class="form-control" id="editId" name="editId" required>
+										</div>
+										<div class="mb-3">
+											<label for="editNombre" class="form-label">Nombre</label>
+											<input type="text" class="form-control" id="editNombre" name="editNombre" required>
+											<div class="invalid-feedback">El nombre debe contener solo letras</div>
+										</div>
+										<div class="mb-3">
+											<label for="editApellido" class="form-label">Apellido</label>
+											<input type="text" class="form-control" id="editApellido" name="editApellido" required>
+											<div class="invalid-feedback">El apellido debe contener solo letras</div>
+										</div>
+										<div class="mb-3">
+											<label for="editCedula" class="form-label">Cédula</label>
+											<input type="text" class="form-control" id="editCedula" required readonly disabled>
+										</div>
+										<div class="mb-3">
+											<label for="editEstadoCivil">Estado civil</label>
+											<select class="form-select" id="editEstadoCivil" name="editEstadoCivil">
+												<option value="Soltero">Soltero</option>
+												<option value="Casado">Casado</option>
+												<option value="Unión Libre">Unión Libre</option>
+												<option value="Divorciado">Divorciado</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingContact">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContact">
+										Información de Contacto
+									</button>
+								</h2>
+								<div id="collapseContact" class="accordion-collapse collapse">
+									<div class="accordion-body">
+										<div class="mb-3">
+											<label for="editTelefono" class="form-label">Teléfono</label>
+											<input type="text" class="form-control" id="editTelefono" name="editTelefono" maxlength="10" required>
+											<div class="invalid-feedback">El número de teléfono es inválido</div>
+										</div>
+										<div class="mb-3">
+											<label for="editEmail" class="form-label">Email</label>
+											<input type="email" class="form-control" id="editEmail" name="editEmail" required>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingWork">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWork">
+										Información de Empresa
+									</button>
+								</h2>
+								<div id="collapseWork" class="accordion-collapse collapse">
+									<div class="accordion-body">
+										<div class="mb-3">
+											<label for="editNombreUsuario" class="form-label">Nombre de Usuario</label>
+											<input type="text" class="form-control" id="editNombreUsuario" name="editNombreUsuario" required readonly disabled>
+										</div>
+										<div class="mb-3">
+											<label for="editRol" class="form-label">Rol</label>
+											<select class="form-select" id="editRol" name="editRol" required>
+												<option value="vendedor">Vendedor</option>
+												<option value="bodeguero">Bodeguero</option>
+												<option value="administrador">Administrador</option>
+											</select>
+										</div>
+										<div class="mb-3">
+											<label for="editFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+											<input type="date" class="form-control" id="editFechaNacimiento" name="editFechaNacimiento" required>
+											<div class="invalid-feedback">La fecha de nacimiento es inválida</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button id="submitActualizar" type="submit" class="btn btn-primary" form="editUsuarioForm">Guardar Cambios</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Modal -->
     <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -165,6 +274,7 @@
 
 </main>
 
+<script src="../js/validaciones.js"></script>
 <script src="../js/ver_personal.js"></script>
 <script src="../js/sidebar.js"></script>
 </body>

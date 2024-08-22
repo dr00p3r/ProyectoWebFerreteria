@@ -6,8 +6,20 @@ table {
     border-collapse: collapse;
 }
 
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-btn, .delete-btn, .activate-btn{
+  width: 100%;
+  margin: auto;
+}
+
 @media (max-width: 2160px) {
-	table th:nth-child(10), table td:nth-child(10)
+	table th:nth-child(10), table td:nth-child(10),
+	table th:nth-child(8), table td:nth-child(8)
 	{
 		display: none;
 	}
@@ -15,23 +27,23 @@ table {
 
 @media (max-width: 1200px) {
 	table th:nth-child(1), table td:nth-child(1),
-	table th:nth-child(6), table td:nth-child(6)
+	table th:nth-child(6), table td:nth-child(6),
+	table th:nth-child(4), table td:nth-child(4)
 	{
 		display: none;
 	}
 }
 
 @media (max-width: 992px) {
-	table th:nth-child(4), table td:nth-child(4),
-	table th:nth-child(7), table td:nth-child(7),
-	table th:nth-child(9), table td:nth-child(9)
+	table th:nth-child(9), table td:nth-child(9),
+	table th:nth-child(7), table td:nth-child(7)
 	{
 		display: none;
 	}
 }
 
 @media (max-width: 768px) {
-	table th:nth-child(8), table td:nth-child(8),
+	table th:nth-child(11), table td:nth-child(11),
 	table th:nth-child(5), table td:nth-child(5)
 	{
 		display: none;
@@ -41,3 +53,4 @@ table {
 		white-space: nowrap;
 	}
 }
+

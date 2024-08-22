@@ -3,6 +3,15 @@
 let contrasenaAleatoria = Math.random().toString(36).slice(-8);
 document.getElementById('password').value = contrasenaAleatoria;
 
+//Poner maximo a la fecha sin php
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const dd = String(today.getDate()).padStart(2, '0');
+const maxDate = `${yyyy}-${mm}-${dd}`;
+
+document.getElementById('fecha-nacimiento').setAttribute('max', maxDate);
+
 document.getElementById('registro-personal').addEventListener('input', async function() {
     const nombre = document.getElementById('nombre').value.toLowerCase().slice(0, 2);
     const apellido = document.getElementById('apellido').value.toLowerCase();
@@ -25,11 +34,26 @@ document.getElementById('registro-personal').addEventListener('input', async fun
     }
 });
 
+document.getElementById('registro-personal').addEventListener('input', function() {
+	 document.getElementById('error-msg').classList.add('d-none');
+});
+
 document.getElementById('registro-personal').addEventListener('submit', function(e) {
 	e.preventDefault();
 	
-	var formData = new FormData(this);
+	const inputs = document.querySelectorAll('#registro-personal .form-control');
     
+    inputs.forEach(input => {
+        if (input.classList.contains('is-invalid')) {
+            let msgerror = document.getElementById('error-msg');
+			msgerror.classList.remove('d-none');
+			msgerror.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			return;
+        }
+    });
+	
+	var formData = new FormData(this);
+	
     fetch('../php/register_users.php', {
         method: 'POST',
         body: formData
@@ -77,3 +101,91 @@ async function verificarUnicidad(nombreUsuario){
 		return true;
 	}
 }
+
+document.getElementById('nombre').addEventListener('input', function() {
+	this.classList.remove('is-invalid');
+	this.classList.remove('is-valid');
+});
+
+document.getElementById('nombre').addEventListener('blur', function() {
+    if (this.value.trim() === "") {
+        return;
+    }
+
+    if (!validarSoloTexto(this.value)) {
+        this.classList.add('is-invalid');
+    }else{
+		this.classList.add('is-valid');
+	}
+});
+
+document.getElementById('apellido').addEventListener('input', function() {
+	this.classList.remove('is-invalid');
+	this.classList.remove('is-valid');
+});
+
+document.getElementById('apellido').addEventListener('blur', function() {
+    if (this.value.trim() === "") {
+        return;
+    }
+
+    if (!validarSoloTexto(this.value)) {
+        this.classList.add('is-invalid');
+    }else{
+		this.classList.add('is-valid');
+	}
+});
+
+document.getElementById('cedula').addEventListener('input', function() {
+    this.classList.remove('is-invalid');
+	this.classList.remove('is-valid');
+});
+
+document.getElementById('cedula').addEventListener('blur', function() {
+    if (this.value.trim() === "") {
+        return;
+    }
+
+    if (!validarCedula(this.value)) {
+        this.classList.add('is-invalid');
+    }
+	else{
+		this.classList.add('is-valid');
+	}
+});
+
+document.getElementById('telefono').addEventListener('input', function() {
+    this.classList.remove('is-invalid');
+	this.classList.remove('is-valid');
+});
+
+document.getElementById('telefono').addEventListener('blur', function() {
+    if (this.value.trim() === "") {
+        return;
+    }
+
+    if (!validarSoloNumeros(this.value) && (this.value.length != 10)) {
+        this.classList.add('is-invalid');
+    }
+	else{
+		this.classList.add('is-valid');
+	}
+});
+
+document.getElementById('fecha-nacimiento').addEventListener('input', function() {
+    this.classList.remove('is-invalid');
+	this.classList.remove('is-valid');
+});
+
+document.getElementById('fecha-nacimiento').addEventListener('blur', function() {
+    if (this.value.trim() === "") {
+        return;
+    }
+
+    if (!validarFechaNacimiento(this.value)) {
+        this.classList.add('is-invalid');
+    }
+	else{
+		this.classList.add('is-valid');
+	}
+});
