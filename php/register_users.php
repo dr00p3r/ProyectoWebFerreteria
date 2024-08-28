@@ -1,5 +1,5 @@
 <?php 
-include 'db_connection_admin.php';
+include 'db_connection.php';
 
 session_start();
 
@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 $response = [
     'success' => false,
-	'invalidCedula' => false,
+    'invalidCedula' => false,
     'error' => ''
 ];
 
@@ -16,18 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellido = $_POST["apellido"];
     $cedula = $_POST["cedula"];
     $telefono = $_POST["telefono"];
-	$email = $_POST["email"];
-	$usuario = $_POST["usuario"];
+    $email = $_POST["email"];
+    $usuario = $_POST["usuario"];
     $password = $_POST["password"];
-	$rol = $_POST["rol"];
-	$fechaNacimiento = $_POST["fechaNacimiento"];
-	$estadoCivil = $_POST["estadoCivil"];
+    $rol = $_POST["rol"];
+    $fechaNacimiento = $_POST["fecha-nacimiento"];
+    $estadoCivil = $_POST["estadoCivil"];
     
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
-	// Verificar si la cedula ya existe
+    // Verificar si la cédula ya existe
     $checkQuery = "SELECT COUNT(*) FROM usuario WHERE cedulaU = ?";
-    if ($statement = $connection_admin->prepare(checkQuery)) {
+    if ($statement = $connection->prepare($checkQuery)) {
         $statement->bind_param("s", $cedula);
         $statement->execute();
         $statement->bind_result($userCount);
@@ -36,22 +36,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($userCount > 0) {
             $response['invalidCedula'] = true;
-			echo json_encode($response);
-			exit;
+            echo json_encode($response);
+            exit;
         }
     } else {
-        $response['error'] = 'Error en la verificación de la cedula.';
+        $response['error'] = 'Error en la verificación de la cédula.';
+        echo json_encode($response);
+        exit;
     }
-	
-    // Insertar el nuevo usuario
-    $registerQuery = "INSERT INTO usuario (nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, passwordU, rolU, fechaNacimientoU, estadoCivilU) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    if ($statement = $connection_admin->prepare($registerQuery)) {
-        $statement->bind_param("sssssssss", $nombre, $apellido, $cedula, $telefono, $email, $usuario, $estadoCivil, $estadoCivil, $hashedPassword, $rol);
+    
+    $registerQuery = "INSERT INTO usuario (nombreU, apellidoU, cedulaU, telefonoU, emailU, nombreUsuario, passwordU, fechaNacimientoU, estadoCivilU, idR) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    if ($statement = $connection->prepare($registerQuery)) {
+        $statement->bind_param("sssssssssi", $nombre, $apellido, $cedula, $telefono, $email, $usuario, $hashedPassword, $fechaNacimiento, $estadoCivil, $rol);
 
         if ($statement->execute()) {
-			$response['success'] = true;
+            $response['success'] = true;
         } else {
-            $response['error'] = 'Error al registrar el usuario.';
+            $response['error'] = 'Error al registrar el usuario.' . $statement->error . $usuario;
         }
         
         $statement->close();

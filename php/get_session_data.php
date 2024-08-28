@@ -8,7 +8,7 @@ $response = [
     'usuario' => '',
 	'nombre' => '',
 	'apellido' => '',
-	'rol' => ''
+	'accesos' => []
 ];
 
 if (isset($_SESSION['usuario']) && $_SESSION['loggedin']) {
@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['loggedin']) {
     $response['usuario'] = $_SESSION['usuario'];
 	$response['nombre'] = $_SESSION['nombre'];
 	$response['apellido'] = $_SESSION['apellido'];
-	$response['rol'] = $_SESSION['rol'];
+	$response['accesos'] = $_SESSION['accesos'];
 }
 
 echo json_encode($response);

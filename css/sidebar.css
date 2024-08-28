@@ -127,3 +127,7 @@ html, body {
 .btn-toggle-nav li:last-child {
     border-bottom: none;
 }
+
+.d-none{
+	display: none;
+}

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+#registro-roles {
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+  #registro-roles {
+	width: 60%;
+  }
+}
+
+@media (min-width: 992px) {
+  #registro-roles {
+	width: 50%;
+  }
+}

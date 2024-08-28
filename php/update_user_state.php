@@ -1,5 +1,5 @@
 <?php 
-include 'db_connection_admin.php';
+include 'db_connection.php';
 
 session_start();
 
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nuevoEstado = $_POST["nuevoEstado"];
     
     $updateQuery = "UPDATE usuario SET estadoU = ? WHERE idU = $id";
-    if ($statement = $connection_admin->prepare($updateQuery)) {
+    if ($statement = $connection->prepare($updateQuery)) {
         $statement->bind_param("s", $nuevoEstado);
 
         if ($statement->execute()) {

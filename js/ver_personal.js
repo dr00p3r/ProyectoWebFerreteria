@@ -17,7 +17,7 @@ async function llenarTabla(estado) {
                 <td>${usuario.cedulaU}</td>
                 <td>${usuario.telefonoU}</td>
                 <td>${usuario.emailU}</td>
-                <td>${usuario.rolU}</td>
+                <td>${usuario.idR}</td>
                 <td>${usuario.estadoCivilU}</td>
                 <td>${usuario.nombreUsuario}</td>
 				<td>${usuario.fechaCreacionU}</td>
@@ -168,7 +168,7 @@ function llenarModalEdicion(row, usuario){
 		document.getElementById('editCedula').value = usuario.cedulaU;
 		document.getElementById('editTelefono').value = usuario.telefonoU;
 		document.getElementById('editEmail').value = usuario.emailU;
-		document.getElementById('editRol').value = usuario.rolU;
+		document.getElementById('editRol').value = usuario.idR;
 		document.getElementById('editEstadoCivil').value = usuario.estadoCivilU;
 		document.getElementById('editNombreUsuario').value = usuario.nombreUsuario;
 		document.getElementById('editFechaNacimiento').value = usuario.fechaNacimientoU;
@@ -188,7 +188,7 @@ function llenarModalDetalles(row, usuario){
 		document.getElementById('modal-email').innerText = `Email: ${usuario.emailU}`;
 		document.getElementById('modal-nombre').innerText = `Nombre: ${usuario.nombreU}`;
 		document.getElementById('modal-apellido').innerText = `Apellido: ${usuario.apellidoU}`;
-		document.getElementById('modal-rol').innerText = `Rol: ${usuario.rolU}`;
+		document.getElementById('modal-rol').innerText = `Rol: ${usuario.idR}`;
 		document.getElementById('modal-estado-civil').innerText = `Estado civil: ${usuario.estadoCivilU}`;
 		document.getElementById('modal-fecha-creacion').innerText = `Fecha de Creación: ${usuario.fechaCreacionU}`;
 		document.getElementById('modal-estado').innerText = `Estado: ${usuario.estadoU}`;

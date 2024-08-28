@@ -38,6 +38,58 @@ document.getElementById('registro-personal').addEventListener('input', function(
 	 document.getElementById('error-msg').classList.add('d-none');
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    consultarRoles();
+});
+
+async function consultarRoles() {
+    let rolesConsultados = [];
+	
+	try {
+		const response = await fetch('../php/get_roles.php');
+		const data = await response.json();
+
+		if (data.success) {
+			console.log(data);
+			rolesConsultados = data.roles;
+		} else {
+			console.log("Error: " + data.error);
+		}
+	} catch (error) {
+		console.error('Hubo un problema con la operación fetch');
+	}
+	console.log(rolesConsultados);
+	generarRadioBotones(rolesConsultados);
+}
+
+function generarRadioBotones(roles) {
+    const contenedorRoles = document.getElementById('contenedorRoles');
+	console.log('ola');
+    roles.forEach(rol => {
+        const div = document.createElement('div');
+        div.classList.add('form-check', 'form-check-inline', 'w-100');
+
+        const input = document.createElement('input');
+        input.classList.add('form-check-input');
+        input.type = 'radio';
+        input.name = 'rol';
+        input.id = rol.nombreR;
+        input.value = rol.idR;
+        input.required = true;
+
+        const label = document.createElement('label');
+        label.classList.add('form-check-label');
+        label.htmlFor = input.id;
+        label.textContent = rol.nombreR;
+
+        div.appendChild(input);
+        div.appendChild(label);
+        contenedorRoles.appendChild(div);
+    });
+}
+
+
+
 document.getElementById('registro-personal').addEventListener('submit', function(e) {
 	e.preventDefault();
 	
@@ -53,7 +105,9 @@ document.getElementById('registro-personal').addEventListener('submit', function
     });
 	
 	var formData = new FormData(this);
-	
+	for (let [key, value] of formData.entries()) {
+		console.log(key, value);
+	}
     fetch('../php/register_users.php', {
         method: 'POST',
         body: formData

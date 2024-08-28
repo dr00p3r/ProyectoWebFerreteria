@@ -36,10 +36,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					$_SESSION['id'] = $row['idU'];
 					$_SESSION['nombre'] = $row['nombreU'];
 					$_SESSION['apellido'] = $row['apellidoU'];
-					$_SESSION['rol'] = $row['rolU'];
 					$_SESSION['loggedin'] = true;
-					console.log($_SESSION);
-					$response['success'] = true;
+					
+					$idR = $row['idR'];
+					
+					$rolQuery = "SELECT accesosR FROM rol WHERE idR = $idR";
+					if($resultado = $connection->query($rolQuery)){
+						$fila_accesos = $resultado->fetch_assoc();
+						$accesosArray = explode(',', $fila_accesos['accesosR']);
+						$_SESSION['accesos'] = $accesosArray;
+						$response['success'] = true;
+					}
+					else{
+						$response['error'] = 'Error al asignar un rol al usuario.';
+					}
+        				
+					
 				} else {
 					$response['invalidPassword'] = true;
 				}
