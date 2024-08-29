@@ -159,7 +159,6 @@ function actualizarEstado(idUsuario, nuevoEstado){
     });
 }
 
-
 function llenarModalEdicion(row, usuario){
 	row.querySelector('.edit-btn').addEventListener('click', () => {
 		document.getElementById('editId').value = usuario.idU;

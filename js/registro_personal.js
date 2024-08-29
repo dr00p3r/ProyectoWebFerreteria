@@ -50,7 +50,6 @@ async function consultarRoles() {
 		const data = await response.json();
 
 		if (data.success) {
-			console.log(data);
 			rolesConsultados = data.roles;
 		} else {
 			console.log("Error: " + data.error);
@@ -105,16 +104,17 @@ document.getElementById('registro-personal').addEventListener('submit', function
     });
 	
 	var formData = new FormData(this);
-	for (let [key, value] of formData.entries()) {
-		console.log(key, value);
-	}
+	
     fetch('../php/register_users.php', {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
-        if (!data.success) {
+		if(data.success){
+			this.reset();
+		}
+        else {
             if (data.invalidCedula) {
 				
             }

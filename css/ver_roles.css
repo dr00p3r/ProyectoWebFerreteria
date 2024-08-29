@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-btn, .delete-btn, .activate-btn{
+  width: 100%;
+  margin: auto;
+}

@@ -11,19 +11,15 @@ $response = [
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST["editId"];
-    $nombre = $_POST["editNombre"];
-    $apellido = $_POST["editApellido"];
-    $estadoCivil = $_POST["editEstadoCivil"];
-    $fechaNacimiento = $_POST["editFechaNacimiento"];
-    $telefono = $_POST["editTelefono"];
-    $email = $_POST["editEmail"];
-    $rol = $_POST["editRol"];
+    $id = $_POST["idR"];
+    $nombre = $_POST["nombre"];
+    $descripcion = $_POST["descripcion"];
+    $accesos = $_POST["strAccesos"];
 
-    $updateQuery = "UPDATE usuario SET nombreU = ?, apellidoU = ?, estadoCivilU = ?, fechaNacimientoU = ?, telefonoU = ?, emailU = ?, rolU = ? WHERE idU = ?";
+    $updateQuery = "UPDATE rol SET nombreR = ?, descripcionR = ?, accesosR = ? WHERE idR = ?";
     
     if ($statement = $connection->prepare($updateQuery)) {
-        $statement->bind_param("sssssssi", $nombre, $apellido, $estadoCivil, $fechaNacimiento, $telefono, $email, $rol, $id);
+        $statement->bind_param("sssi", $nombre, $descripcion, $accesos, $id);
 
         if ($statement->execute()) {
             $response['success'] = true;
