@@ -215,6 +215,15 @@ async function obtenerUsuarios() {
 	return usuarios;
 }
 
+document.getElementsByName('VerTabla').forEach(radioButton => {
+    radioButton.addEventListener('change', function() {
+        if (this.checked) {
+            verUsuarios = this.value;
+			llenarTabla(verUsuarios);
+        }
+    });
+});
+
 //Eventos de validacion
 document.getElementById('editNombre').addEventListener('input', function() {
 	this.classList.remove('is-invalid');
