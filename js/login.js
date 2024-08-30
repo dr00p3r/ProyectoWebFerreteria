@@ -2,14 +2,12 @@
 document.getElementById('formLogin').addEventListener('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
-	console.log(document.getElementById('usuario').value);
     fetch('../php/login.php', {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
-		console.log(data);
 		if (data.success) {
             window.location.href = 'main.html';
         } else {

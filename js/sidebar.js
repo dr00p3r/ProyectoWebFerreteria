@@ -43,9 +43,7 @@ async function completarSideBarSesion() {
         document.getElementById('msgBienvenida').innerHTML = `Hola, ${data.nombre}`;
         
         const accesos = data.accesos;
-		console.log(accesos);
         if (accesos.includes('facturas')) {
-			console.log('sientra1');
             document.getElementById('sidebarFacturar').classList.remove('d-none');
         }
         if (accesos.includes('reportes')) {
@@ -67,7 +65,6 @@ async function completarSideBarSesion() {
             document.getElementById('sidebarProveedores').classList.remove('d-none');
         }
         if (accesos.includes('clientes')) {
-			console.log('sientra2');
             document.getElementById('sidebarClientes').classList.remove('d-none');
         }
     } catch (error) {

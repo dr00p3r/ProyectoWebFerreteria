@@ -1,19 +1,19 @@
 @charset "utf-8";
 /* CSS Document */
 
-#registro-roles {
+#registro-categorias {
 	margin: auto;
 }
 
 @media (min-width: 768px) {
-  #registro-roles {
+  #registro-categorias {
 	width: 60%;
 	margin: 4px;
   }
 }
 
 @media (min-width: 992px) {
-  #registro-roles {
+  #registro-categorias {
 	width: 50%;
   }
 }

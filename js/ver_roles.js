@@ -14,7 +14,7 @@ async function llenarTabla(estado) {
                 <td>${rol.idR}</td>
                 <td>${rol.nombreR}</td>
                 <td>${rol.descripcionR}</td>
-                <td>${rol.accesosR}</td>
+                <td>${rol.accesosR.split(',').join(', ')}</td>
                 <td>${rol.estadoR}</td>
                 <td class="acciones">
                     <button class="btn btn-primary btn-sm edit-btn mb-2" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
@@ -128,7 +128,7 @@ function llenarModalDetalles(row, rol){
 		document.getElementById('modal-id').innerText = `Id de Rol: ${rol.idR}`;
 		document.getElementById('modal-nombre').innerText = `Nombre de Rol: ${rol.nombreR}`;
 		document.getElementById('modal-descripcion').innerText = `Descripción: ${rol.descripcionR}`;
-		document.getElementById('modal-accesos').innerText = `Accesos: ${rol.accesosR}`;
+		document.getElementById('modal-accesos').innerText = `Accesos: ${rol.accesosR.split(',').join(', ')}`;
 		document.getElementById('modal-estado').innerText = `Estado: ${rol.estadoR}`;
 
 		const myModal = new bootstrap.Modal(document.getElementById('rolModal'));

@@ -6,8 +6,9 @@
 }
 
 @media (min-width: 768px) {
-  #registro-personal {
-	width: 60%;
+	#registro-personal {
+		margin: 4px;
+		width: 60%;
   }
 }
 
