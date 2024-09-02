@@ -43,6 +43,7 @@ async function completarSideBarSesion() {
         document.getElementById('msgBienvenida').innerHTML = `Hola, ${data.nombre}`;
         
         const accesos = data.accesos;
+		console.log(data.accesos);
         if (accesos.includes('facturas')) {
             document.getElementById('sidebarFacturar').classList.remove('d-none');
         }
